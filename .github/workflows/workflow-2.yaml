@@ -1,15 +1,24 @@
-name: Deployment Workflow
-on: [push]
+name: Deployment-MultiJobs
+on: push
 jobs:
-  Deploy-WorkFlow:
+  Code-Checkout:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Code Checkout
         uses: actions/checkout@v3
+  Install-Dependencies:
+    runs-on: ubuntu-latest
+    steps:
       - name: Install Dependencies
         run: npm ci
-      - name: Lint-step
+  LintJob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint the code
         run: npm lint
+  BuildTestAndDeployModule:
+    runs-on: ubuntu-latest
+    steps:
       - name: Build the Module
         run: |
           echo "**** BUILDING THE MODULE ****"
@@ -20,4 +29,3 @@ jobs:
           npm test
       - name: Deploy Module
         run: echo "Deploy Successful! 🎉"
-  
