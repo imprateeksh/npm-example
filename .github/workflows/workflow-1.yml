@@ -1,0 +1,23 @@
+name: Deployment Workflow
+on: push
+jobs:
+  - name: Lint Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm ci
+      - name: Lint-step
+        run: npm lint
+      - name: Test module
+        run: |
+          echo "**** STARTING TESTS ****"
+          npm test
+      - name: Build the Module
+        run: |
+          echo "**** BUILDING THE MODULE ****"
+          npm build
+      - name: Deploy Module
+        run: echo "Deploy Successful!"
+  
