@@ -19,17 +19,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Lint the code
-        run: npm lint
+        run: npm run lint
   BuildTestAndDeployModule:
     runs-on: ubuntu-latest
     steps:
-      - name: Build the Module
-        run: |
-          echo "**** BUILDING THE MODULE ****"
-          npm build
       - name: Test module
         run: |
           echo "**** STARTING TESTS 🔎 ****"
-          npm test
+          npm run test
+      - name: Build the Module
+        run: |
+          echo "**** BUILDING THE MODULE ****"
+          npm run build
+
       - name: Deploy Module
         run: echo "Deploy Successful! 🎉"

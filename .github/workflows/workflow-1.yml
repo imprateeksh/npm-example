@@ -13,15 +13,15 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       - name: Lint-step
-        run: npm lint
-      - name: Build the Module
-        run: |
-          echo "**** BUILDING THE MODULE ****"
-          npm build
+        run: npm run lint
       - name: Test module
         run: |
           echo "**** STARTING TESTS 🔎 ****"
-          npm test
+          npm run test
+      - name: Build the Module
+        run: |
+          echo "**** BUILDING THE MODULE ****"
+          npm run build
       - name: Deploy Module
         run: echo "Deploy Successful! 🎉"
   
