@@ -11,6 +11,7 @@ jobs:
       - name: Lint the code
         run: npm run lint
   BuildTestAndDeployModule:
+    needs: LintJob
     runs-on: ubuntu-latest
     steps:
       - name: Code Checkout
