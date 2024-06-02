@@ -9,6 +9,10 @@ jobs:
   Install-Dependencies:
     runs-on: ubuntu-latest
     steps:
+      - name: Install NPM
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.0'
       - name: Install Dependencies
         run: npm ci
   LintJob:
