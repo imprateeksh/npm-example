@@ -1,0 +1,23 @@
+name: Expressions and Contexts
+run-name: Pipeline by @${{ github.actor }}; Action  ${{ github.event_name }}
+on: [push, pull_request, issues, workflow_dispatch]
+jobs:
+  using-expressions-and-contexts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Expression syntaxes
+        id: expressions
+        run: |
+          echo ${{ 1 }}
+          echo ${{ null }}
+          echo ${{ "HELLO THIS IS MY WORLD!" }}
+          echo ${{ true && false or (true || false) }}
+          echo ${{ 10 > 5 }}
+          echo ${{ "prateek" == "PRATEEK" }}
+      - name: Dump Contexts
+        run: |
+          echo "${{ toJson(github) }}"
+          echo "${{ toJson(runner) }}"
+          echo "${{ toJson(steps) }}"
+          echo "${{ toJson(secrets) }}"
+          echo "${{ toJson(job) }}"

@@ -1,0 +1,27 @@
+name: Events Activity And Filters
+run-name: EA-and-EF
+on:
+  pull_request:
+      types: ['opened', 'edited']
+      branches:
+        - main
+        - 'releases/**'
+        - 'feat-*'
+      paths:
+       - '**.py'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'feat-*'
+      - 'release/**'
+    paths-ignore:
+      - '.github/workflows/*'
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First step
+        run: echo ${{ "Hello User" }}
+
+
